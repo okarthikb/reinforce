@@ -18,9 +18,7 @@ after training for 500 epochs (2 hrs 42 min)...
 
 <p align="center"><img src="pi_after.gif"></p>
 
-Had I chosen the right hyperparameters, it'd have learned faster, but this is okay. We just want to see if it learns anything or not, and here the agent has learned a decent strategy - striking the ball quickly by the tip of the paddle so it (ball) flies off before the opponent can reach it.
-
-The return for an episode is the difference b/w agent score and opp score. Here are the returns for 500 epochs...
+Had I chosen the right hyperparameters, it'd have learned faster, but this is okay. We just want to see if it learns anything or not, and here the agent has learned a decent strategy - striking the ball quickly by the tip of the paddle so it (ball) flies off before the opponent can reach it. The return for an episode is the difference b/w agent score and opp score. Here are the returns for 500 epochs...
 
 <p align="center"><img src="rewards.png"></p>
 

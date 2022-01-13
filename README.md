@@ -1,7 +1,7 @@
 # REINFORCE
 
 
-REINFORCE is the simplest deep RL algorithm, yet achieves cool results. I've written a simple module to train neural nets to play OpenAI gym games using the algorithm. To train a net for a particular game
+REINFORCE is the simplest deep RL algorithm, yet achieves cool results. I've written a simple module to train neural nets to play OpenAI gym games using the algorithm. To train a net for a particular game...
 
 - change `env_name` in `net.py` to desired env name
 - change the NN architecture, the state pre-process function `phi`, and `frames` in `net.py`

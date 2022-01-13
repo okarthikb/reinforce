@@ -12,11 +12,11 @@ REINFORCE is the simplest deep RL algorithm, yet achieves cool results. I've wri
 
 Here is `Pong-v0` before training...
 
-<div style="text-align:center"><img src="pi_before.gif"/></div>
+<div style="display: flex; justify-content: center;"><img src="pi_before.gif"/></div>
 
 after training for 500 epochs (2 hrs 42 min)...
 
-<div style="text-align:center"><img src="pi_after.gif"/></div>
+<div><img src="pi_after.gif"/></div>
 
 Had I chosen the right hyperparameters, it'd have learned faster, but this is okay. We just want to see if it learns anything or not, and here the agent has learned a decent strategy - striking the ball quickly by the tip of the paddle so it (ball) flies off before the opponent can reach it.
 

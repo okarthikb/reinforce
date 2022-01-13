@@ -12,7 +12,9 @@ REINFORCE is the simplest deep RL algorithm, yet achieves cool results. I've wri
 
 Here is `Pong-v0` before training...
 
-<div style="display: flex; justify-content: center;"><img src="pi_before.gif"/></div>
+<p align="center">
+    <img src="pi_before.gif">
+</p>
 
 after training for 500 epochs (2 hrs 42 min)...
 

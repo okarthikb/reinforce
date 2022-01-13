@@ -1,5 +1,3 @@
-# REINFORCE
-
 ![](reinforce.png)
 
 REINFORCE is the simplest deep RL algorithm, yet achieves cool results. I've written a simple module to train neural nets to play OpenAI gym games using the algorithm. To train a net for a particular game...

@@ -23,8 +23,8 @@ Had I chosen the right hyperparameters, it'd have learned faster, but this is ok
 
 The return for an episode is the difference b/w agent score and opp score. Here are the returns for 500 epochs...
 
-![rewards.png]
+![](rewards.png)
 
 and the loss...
 
-![losses.png]
+![](losses.png)

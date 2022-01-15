@@ -1,4 +1,5 @@
 import gym
+import sys
 import time
 import tqdm
 import torch
@@ -30,16 +31,15 @@ class net(torch.nn.Module):
 
 pi = net()
 
-frames = 4  # num of consecutive frames to process
+frames = 3  # num of consecutive frames to process
 
 
 def tensor(x):
   return torch.as_tensor(x, dtype=torch.float32)
 
-
 def phi(seq):
   seq = np.array(seq)
-  seq = seq[::3, 34:194, :, 1]
+  seq = seq[::2, 34:194, :, 1]
   seq[seq == 72] = 0
   seq[seq != 0] = 1
   seq = seq[1] - seq[0]
@@ -92,22 +92,22 @@ def tau(render=False):
 def train(epochs, N, mod, gamma, opt):
   losses = []
   rewards = []
-  lossesf = open(prefix + "losses.txt", "w")
-  rewardsf = open(prefix + "rewards.txt", "w")
-
+  lossesf = open(prefix + f"losses.txt", "w")
+  rewardsf = open(prefix + f"rewards.txt", "w")
+  # start clock
   start = time.time()
-
+  # train loop
   for epoch in range(1, epochs + 1):
     J = 0  # reward
     r = 0  # avg return for N episodes
-    # calculated expected reward
+    # compute expected reward
     for _ in range(N):
       S, A, R = tau()
       r += R.sum()
       for t in range(len(R) - 2, -1, -1):
         R[t] += gamma * R[t + 1]
-      R = (R - R.mean()) / R.std()
-      J += loss(tensor(S), tensor(A), tensor(R))
+      R = (R - R.mean()) / R.std()  # normalize returns
+      J += loss(tensor(S), tensor(A), tensor(R))  # compute loss
     # backprop and step
     opt.zero_grad()
     J /= N
@@ -115,14 +115,14 @@ def train(epochs, N, mod, gamma, opt):
     opt.step()
     # return reward and loss
     rewards.append(r / N)
-    losses.append(abs(J.item()))
+    losses.append(J.item())
     # boring logging :P
     if epoch % mod == 0:
       print("epoch: {}  reward: {:.3f}  loss: {:.3f}".format(epoch, rewards[-1], losses[-1]))
       lossesf.write(f"{losses[-1]}\n")
       rewardsf.write(f"{rewards[-1]}\n")
       torch.save(pi.state_dict(), prefix + f"{epoch}.pt")
-
+  # end clock
   print("train time: {:.2f}s".format(time.time() - start))
-
+  # return losses and episode
   return losses, rewards

@@ -1,3 +1,5 @@
+# reinforce
+
 <p align="center"><img src="reinforce.png"></p>
 
 REINFORCE is the simplest deep RL algorithm, yet achieves cool results. I've written a simple module to train neural nets to play OpenAI gym games using the algorithm. To train a net for a particular game...
